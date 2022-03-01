@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Link, Slider, styled } from '@mui/material'
 
+import DonationForm from '@/components/DonationForm/index'
 import Header from '@/header'
 
 const App: FC = () => {
@@ -8,13 +9,7 @@ const App: FC = () => {
     <Root>
       <Header />
       <div>
-        <h2>
-          How much do you like{' '}
-          <Link href='https://vitejs.dev/' target='_blank' rel='noopener noreferrer'>
-            Vite?
-          </Link>
-        </h2>
-        <Slider />
+        <DonationForm />
       </div>
     </Root>
   )
