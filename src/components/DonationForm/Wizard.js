@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-final-form'
-import { Button, ButtonGroup } from '@mui/material'
+import { Button } from '@mui/material'
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow'
 
 export default class Wizard extends React.Component {
   static propTypes = {
@@ -62,24 +63,33 @@ export default class Wizard extends React.Component {
         {({ handleSubmit, submitting, values }) => (
           <form onSubmit={handleSubmit}>
             {activePage}
-            <div className='buttons'>
-              <ButtonGroup variant='contained' aria-label='Navigation Button Group'>
-                {page > 0 && (
-                  <Button type='button' onClick={this.previous}>
-                    « Previous
-                  </Button>
-                )}
-                {!isLastPage && (
-                  <Button type='submit'>
-                    {page === 0 && !values.donationAmount ? 'Select a Donation Amount' : 'Next »'}
-                  </Button>
-                )}
-                {isLastPage && (
-                  <Button type='submit' disabled={submitting}>
-                    Submit
-                  </Button>
-                )}
-              </ButtonGroup>
+            <div className='buttons flex justify-between'>
+              {page > 0 && (
+                <Button
+                  type='button'
+                  variant='outlined'
+                  onClick={this.previous}
+                  startIcon={<DoubleArrowIcon className='rotate180' />}
+                >
+                  <span className='button--text'>Previous</span>
+                </Button>
+              )}
+              {!isLastPage && (
+                <Button
+                  type='submit'
+                  variant='contained'
+                  endIcon={values.donationAmount ? <DoubleArrowIcon /> : undefined}
+                >
+                  <span className='button--text'>
+                    {page === 0 && !values.donationAmount ? 'Select a Donation Amount' : 'Next'}
+                  </span>
+                </Button>
+              )}
+              {isLastPage && (
+                <Button type='submit' variant='contained' disabled={submitting}>
+                  Submit
+                </Button>
+              )}
             </div>
 
             <pre>{JSON.stringify(values, 0, 2)}</pre>

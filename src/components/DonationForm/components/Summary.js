@@ -45,7 +45,7 @@ const Summary = () => {
         <Switches
           // label="Cover Processing Fees"
           name='processingFees'
-          required={true}
+          required={false}
           data={{ label: 'Cover Processing Fee', value: true }}
         />
       </Grid>

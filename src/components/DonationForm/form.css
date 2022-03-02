@@ -15,6 +15,14 @@
   padding: inherit;
 }
 
+.rotate180 {
+  transform: rotate(180deg);
+}
+
+.button--text {
+  max-height: 22px;
+}
+
 .donation-summary h3 {
   border-bottom: 2px solid #e8e8e8;
   padding-bottom: 5px;

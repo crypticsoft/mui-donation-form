@@ -1,11 +1,11 @@
-import React, { useState, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Field } from 'react-final-form'
 import { TextField } from 'mui-rff'
 
 import { Grid, Button, ButtonGroup, FormGroup, FormLabel, FormControl } from '@mui/material'
 
 import { loadStripe } from '@stripe/stripe-js'
-import { useStripe, Elements } from '@stripe/react-stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 
 import './form.css'
 
@@ -93,7 +93,7 @@ const onSubmit = async values => {
   window.alert(JSON.stringify(values, 0, 2))
 }
 
-const validate = values => {
+/*const validate = values => {
   const errors = {}
   if (!values.firstName) {
     errors.firstName = 'Required'
@@ -108,7 +108,7 @@ const validate = values => {
     errors.donationAmount = 'Required'
   }
   return errors
-}
+}*/
 
 const Steps = [
   [
@@ -184,89 +184,23 @@ const DonationForm = props => (
   </Elements>
 )
 
-const WizardForm = props => {
-  const [success, setSuccess] = useState(false)
-  const [message, setMessage] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
-  // const [clientSecret, setClientSecret] = useState(null);
-  // const [stepValues, setStepValues] = useState(null);
-  const stripe = useStripe()
-  // const elements = useElements();
-  /*
-  useEffect(() => {
-    if (!stripe) {
-      return;
-    }
-
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      'payment_intent_client_secret',
-    );
-
-    if (!clientSecret) {
-      return;
-    }
-
-    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      console.log('paymentIntent', paymentIntent);
-      switch (paymentIntent.status) {
-        case 'succeeded':
-          setMessage('Payment succeeded!');
-          break;
-        case 'processing':
-          setMessage('Your payment is processing.');
-          break;
-        case 'requires_payment_method':
-          setMessage('Your payment was not successful, please try again.');
-          break;
-        default:
-          setMessage('Something went wrong.');
-          break;
-      }
-    });
-  }, [stripe]);
-*/
-
-  /*  useEffect(() => {
-    console.log('fetch secret');
-    async () => {
-      const paymentIntent = await stripe.paymentIntents.create({
-        amount: 2000,
-        currency: 'usd',
-        payment_method_types: ['card'],
-      });
-      console.log(paymentIntent);
-      setClientSecret(paymentIntent?.client_secret);
-      setOptions({ clientSecret: paymentIntent?.client_secret });
-    };
-  }, []);
-*/
-  return (
-    <Wizard
-      initialValues={{
-        // amount: '50',
-        // donationAmount: '$50',
-        donationType: 'Single',
-        processingFees: true
-      }}
-      onSubmit={onSubmit}
-    >
-      {Steps &&
-        Steps.map((step, index) => (
-          <Wizard.Page
-            key={index}
-            // validate={(values) => {
-            //   // setStepValues(values);
-            //   stepValues = values;
-            //   validate(values);
-            // }}
-          >
-            <Grid container alignItems='flex-start' spacing={2}>
-              {renderGridItem(step)}
-            </Grid>
-          </Wizard.Page>
-        ))}
-    </Wizard>
-  )
-}
+const WizardForm = props => (
+  <Wizard
+    initialValues={{
+      donationType: 'Single',
+      processingFees: true
+    }}
+    onSubmit={onSubmit}
+  >
+    {Steps &&
+      Steps.map((step, index) => (
+        <Wizard.Page key={index}>
+          <Grid container alignItems='flex-start' spacing={2}>
+            {renderGridItem(step)}
+          </Grid>
+        </Wizard.Page>
+      ))}
+  </Wizard>
+)
 
 export default DonationForm
