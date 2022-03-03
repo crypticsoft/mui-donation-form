@@ -13,11 +13,11 @@ A Vite template for React, TypeScript and the latest major version of MUI.
 
 ## Demo
 
-<img src='./screen-shots/demo.png' />
+<img src='./screenshots/demo.png' />
 
 ## Getting Started
 
-- Clone the repo, `git clone https://github.com/christopher-caldwell/vite-material-ui.git`, or use the "Use this template" button at the top of this page.
+- Clone the repo, `git clone https://github.com/crypticsoft/mui-donation-form.git`
 - Install dependencies using `yarn`
 - Start the server with `yarn dev`
 
