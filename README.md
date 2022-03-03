@@ -13,7 +13,7 @@ A Vite template for React, TypeScript and the latest major version of MUI.
 
 ## Demo
 
-<img src='./screenshots/demo.png' />
+![Demo](./screenshots/demo.png)
 
 ## Getting Started
 

@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import { Link, Slider, styled } from '@mui/material'
 
-import DonationForm from '@/components/DonationForm/index'
+// @ts-ignore
+import DonationForm from '@/components/DonationForm'
 import Header from '@/header'
 
 const App: FC = () => {

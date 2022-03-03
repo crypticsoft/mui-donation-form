@@ -1,7 +1,8 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import DonationForm from '../components/DonationForm/index'
+// @ts-ignore
+import DonationForm from '../components/DonationForm'
 
 export default {
   title: 'Example/Donation Form',
